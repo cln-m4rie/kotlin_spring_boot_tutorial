@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.bind.annotation.*
 import com.example.kotlin_spring_boot_tutorial.domain.entity.User
 import com.example.kotlin_spring_boot_tutorial.domain.service.UserService
+import org.springframework.validation.BindingResult
+import org.springframework.validation.annotation.Validated
 
 @RestController
 class UserController {
@@ -25,13 +27,13 @@ class UserController {
 
     // 1件作成
     @PostMapping("/users")
-    fun createUserById(@RequestBody user: User): List<User> {
+    fun createUserById(@RequestBody @Validated user: User, bindingResult: BindingResult): List<User> {
         return userService.getInsertUser(user)
     }
 
     // 1件編集
     @PutMapping("/users/{id}")
-    fun updateUserById(@PathVariable("id") id: Int, @RequestBody user: User): User {
+    fun updateUserById(@PathVariable("id") id: Int, @RequestBody @Validated user: User): User {
         return userService.getUpdateUser(id, user)
     }
 
