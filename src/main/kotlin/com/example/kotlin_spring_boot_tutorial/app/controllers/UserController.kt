@@ -1,12 +1,10 @@
 package com.example.kotlin_spring_boot_tutorial.app.controllers
 
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.RestController
-import org.springframework.web.bind.annotation.*
 import com.example.kotlin_spring_boot_tutorial.domain.entity.User
 import com.example.kotlin_spring_boot_tutorial.domain.service.UserService
-import org.springframework.validation.BindingResult
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.validation.annotation.Validated
+import org.springframework.web.bind.annotation.*
 
 @RestController
 class UserController {
@@ -19,16 +17,16 @@ class UserController {
         return userService.getUserList()
     }
 
+    // 1件作成
+    @PostMapping("/users")
+    fun createUser(@RequestBody user: User): List<User> {
+        return userService.getInsertUser(user)
+    }
+
     // 1件取得
     @GetMapping("/users/{id}")
     fun getUserById(@PathVariable("id") id: Int?): User {
         return userService.getUserById(id)
-    }
-
-    // 1件作成
-    @PostMapping("/users")
-    fun createUserById(@RequestBody @Validated user: User, bindingResult: BindingResult): List<User> {
-        return userService.getInsertUser(user)
     }
 
     // 1件編集

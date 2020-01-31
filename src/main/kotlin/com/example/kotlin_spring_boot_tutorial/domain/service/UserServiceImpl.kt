@@ -27,6 +27,7 @@ class UserServiceImpl : UserService {
 
     override fun getUpdateUser(id: Int, user: User): User {
         user.id = id
+        userRepository.updateUserById(user)
         return userRepository.selectUserById(id)
     }
 
