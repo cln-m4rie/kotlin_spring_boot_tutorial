@@ -1,4 +1,4 @@
-package com.example.kotlin_spring_boot_tutorial.app.controller
+package com.example.kotlin_spring_boot_tutorial.app.controllers
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RestController
