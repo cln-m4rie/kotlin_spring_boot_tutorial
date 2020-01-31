@@ -12,13 +12,13 @@ class UserController {
     lateinit var userService: UserService
 
     // 全件取得
-    @GetMapping("users")
+    @GetMapping("/users")
     fun getUserList(): List<User> {
         return userService.getUserList()
     }
 
     // 1件取得
-    @GetMapping("users/{id}")
+    @GetMapping("/users/{id}")
     fun getUserById(@PathVariable("id") id: Int?): User {
         return userService.getUserById(id)
     }
